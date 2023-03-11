@@ -2,11 +2,11 @@ import React, { useState } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 
 const Header = () => {
-  const [pesquisar, setPesquisar] = useState()
+  const [pesquisar, setPesquisar] = useState("")
   const navigate = useNavigate()
 
   const search = () => {
-    if(pesquisar){
+    if(pesquisar.trim()){
       navigate(`/search/${pesquisar}`)
       setPesquisar('')
 
@@ -15,7 +15,7 @@ const Header = () => {
   return (
     <header>
       <div className="search">
-        <input type="search" onChange={(e) => setPesquisar(e.target.value.trim())} onKeyDown={(e) => e.key === 'Enter' ? search() : null} value={pesquisar} />
+        <input type="search" onChange={(e) => setPesquisar(e.target.value)} onKeyDown={(e) => e.key === 'Enter' ? search() : null} value={pesquisar} />
         <button onClick={search}>🔍</button>
       </div>
         <nav>

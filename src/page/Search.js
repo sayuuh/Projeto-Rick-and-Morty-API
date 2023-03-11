@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import CardCharacter from '../components/CardCharacter'
 
 const Search = () => {
     const {search} = useParams()
@@ -10,15 +11,33 @@ const Search = () => {
         const requests = async () => {
             const response = await fetch(`${url}/character`)
             const data = await response.json()
-            // const array = data.filter((item) => item.name.toLowerCase().includes(search.toLocaleLowerCase()))
-            // console.log(array)
-            setCharacters(data.results)
+            const lista = data.results
+            const array = lista.filter((item) => item.name.includes(search))
+            console.log(array)
+            
+            setCharacters(array)
         }
         requests()
-    }, [])
+    }, [search])
   return (
     <div>
-        search {search}
+        <h2>{search}</h2>
+        <main className='characters'>
+          {
+            characters.length > 0
+            ?
+                <section className='card-character' >
+                    {
+                        characters.map((item) => (
+                            <CardCharacter key={item.id} character={item} />
+                            ))
+                    }
+                </section>
+            :
+                <p className='list-notfound'>404, Not Found</p>
+
+          }
+        </main>
     </div>
   )
 }
