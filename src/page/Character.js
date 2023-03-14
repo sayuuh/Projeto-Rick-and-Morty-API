@@ -30,7 +30,7 @@ const Character = () => {
                 <img src={character.image} alt="personagem" />
             </div>
             <div className='info-content'>
-                <p>Status: {character.status}</p>
+                <p className='character-status'>Status: {character.status === 'Alive' ? '🟢' + character.status : character.status === 'Dead' ? '🔴' + character.status : '🟠' + character.status}</p>
                 <p>Gender: {character.gender}</p>
                 <p>Species: {character.species}</p>
                 {character.origin && <p>Origin: {character.origin.name}</p>}

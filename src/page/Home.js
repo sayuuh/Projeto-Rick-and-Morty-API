@@ -9,27 +9,40 @@ const Home = () => {
     const [characters, setCharacters] = useState([])
     const [episodes, setEpisodes] = useState([])
     const [locations, setLocations] = useState([])
+    
 
+    const httpRequest = async (url) => {
+      try{
+        const response = await fetch(url)
+        const data = await response.json()
+        return data
+      }catch(error){
+        console.log('Error: ' + error.message)
+    }
+  }
+  
+    function generateRandom(max){
+      const min = 1
+      let randomNumbers = []
+      while(randomNumbers.length < 3){
+        const randomNum = Math.floor(Math.random() * (max - min) + min)
+          if(!randomNumbers.includes(randomNum)){
+            randomNumbers.push(randomNum)
+          }
+      }
+      return randomNumbers.sort()
+    }
+    
     useEffect(() => {
       const request = async () => {
-        setCharacters(await httpRequest(`${url}/character`))
-        setEpisodes(await httpRequest(`${url}/episode`))
-        setLocations(await httpRequest(`${url}/location`))
-
+        setCharacters(await httpRequest(`${url}/character/${generateRandom(826).toString()}`))
+        setLocations(await httpRequest(`${url}/location/${generateRandom(126).toString()}`))
+        setEpisodes(await httpRequest(`${url}/episode/${generateRandom(51).toString()}`))
       }
       request()
     }, [])
 
-    const httpRequest = async (url) => {
-        try{
-          const response = await fetch(url)
-          const data = await response.json()
-          return data.results
-        }catch(error){
-          console.log('Error: ' + error.message)
-      }
-    }
-    
+       
     return (
       <div className='main-div'>
         <h2>Characters</h2>

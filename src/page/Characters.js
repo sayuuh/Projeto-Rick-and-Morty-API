@@ -68,18 +68,26 @@ const Characters = () => {
                     ))
             }
         </section>
-        <section>
+        <section className='button'>
             {
-                prev && <button onClick={() => btnPrev()}>🔙</button>
+                prev && <button onClick={() => btnPrev()}>
+                    <img src="https://cdn-icons-png.flaticon.com/512/137/137531.png" alt="back" />
+                </button>
             }
             {
-                !prev && <button disabled>🔙</button>
+                !prev && <button disabled>
+                    <img src="https://cdn-icons-png.flaticon.com/512/137/137531.png" alt="back" />
+                </button>
             }
             {
-                next && <button onClick={() => btnNext()}>🔜</button>
+                next && <button onClick={() => btnNext()}>
+                    <img src="https://cdn-icons-png.flaticon.com/512/2161/2161524.png" alt="next" />
+                </button>
             }
             {
-                !next && <button disabled>🔜</button>
+                !next && <button disabled>
+                    <img src="https://cdn-icons-png.flaticon.com/512/2161/2161524.png" alt="next" />
+                </button>
             }
         </section>
     </main>

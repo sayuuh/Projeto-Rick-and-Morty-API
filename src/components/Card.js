@@ -13,7 +13,7 @@ const Card = ({character}) => {
           <div className='character-api'>
               <p>Name: <strong>{character.name}</strong></p>
               <p>Gender: {character.gender}</p>
-              <p className='character-status'>Status: {character.status === 'Alive' ? '🟢' + character.status : '🔴' + character.status}</p>
+              <p className='character-status'>Status: {character.status === 'Alive' ? '🟢' + character.status : character.status === 'Dead' ? '🔴' + character.status : '🟠' + character.status}</p>
           </div>
       </div>
   )

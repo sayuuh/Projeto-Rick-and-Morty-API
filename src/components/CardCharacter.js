@@ -16,7 +16,7 @@ const CardCharacter = ({character}) => {
         <div className='info-character'>
             <h3>{character.name}</h3>
             <p>{character.origin.name}</p>
-            <p>{character.status}</p>
+            <p className='character-status'>Status: {character.status === 'Alive' ? '🟢' + character.status : character.status === 'Dead' ? '🔴' + character.status : '🟠' + character.status}</p>
         </div>
     </div>
   )
